@@ -3,63 +3,866 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>ShopEasy - Register</title>
+
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* =========================
+       REGISTER PAGE
+    ========================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: #172033;
+
+      background:
+        radial-gradient(circle at 10% 10%, rgba(37, 99, 235, .12), transparent 30%),
+        radial-gradient(circle at 90% 90%, rgba(79, 70, 229, .10), transparent 30%),
+        #f5f7fb;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================== */
+
+    .navbar {
+      height: 72px;
+      padding: 0 6%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      background: rgba(255, 255, 255, .92);
+      border-bottom: 1px solid #e7eaf0;
+
+      position: sticky;
+      top: 0;
+      z-index: 100;
+
+      backdrop-filter: blur(14px);
+    }
+
+    .brand {
+      text-decoration: none;
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -.7px;
+      color: #172033;
+    }
+
+    .brand span {
+      color: #2563eb;
+    }
+
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+
+      border: 1px solid #e1e5ec;
+      border-radius: 50%;
+
+      background: white;
+      cursor: pointer;
+
+      font-size: 18px;
+
+      transition: .25s;
+    }
+
+    .icon-btn:hover {
+      transform: translateY(-2px);
+      border-color: #2563eb;
+      background: #eff5ff;
+    }
+
+    /* =========================
+       MAIN
+    ========================== */
+
+    .register-page {
+      min-height: calc(100vh - 72px);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 45px 20px;
+    }
+
+    .register-wrapper {
+      width: 100%;
+      max-width: 1000px;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      background: white;
+
+      border-radius: 24px;
+      overflow: hidden;
+
+      border: 1px solid #e9edf4;
+
+      box-shadow:
+        0 25px 70px rgba(15, 23, 42, .12);
+    }
+
+    /* =========================
+       LEFT PANEL
+    ========================== */
+
+    .register-left {
+      padding: 55px 45px;
+
+      color: white;
+
+      background:
+        radial-gradient(
+          circle at 90% 10%,
+          rgba(255,255,255,.18),
+          transparent 30%
+        ),
+        linear-gradient(
+          145deg,
+          #2563eb,
+          #4f46e5
+        );
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .register-left::before {
+      content: "";
+
+      width: 250px;
+      height: 250px;
+
+      position: absolute;
+      right: -100px;
+      top: -90px;
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,.08);
+    }
+
+    .register-left::after {
+      content: "";
+
+      width: 190px;
+      height: 190px;
+
+      position: absolute;
+      left: -90px;
+      bottom: -100px;
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,.07);
+    }
+
+    .logo-box {
+      width: 60px;
+      height: 60px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 17px;
+
+      background: rgba(255,255,255,.16);
+      border: 1px solid rgba(255,255,255,.2);
+
+      font-size: 28px;
+
+      margin-bottom: 30px;
+    }
+
+    .register-left h2 {
+      margin: 0 0 16px;
+
+      font-size: 38px;
+      line-height: 1.12;
+
+      font-weight: 800;
+
+      position: relative;
+      z-index: 2;
+    }
+
+    .register-left h2 span {
+      color: #dbeafe;
+    }
+
+    .register-left > p {
+      max-width: 400px;
+
+      margin: 0;
+
+      color: rgba(255,255,255,.82);
+
+      line-height: 1.7;
+
+      font-size: 15px;
+
+      position: relative;
+      z-index: 2;
+    }
+
+    /* BENEFITS */
+
+    .benefits {
+      margin-top: 35px;
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 17px;
+
+      position: relative;
+      z-index: 2;
+    }
+
+    .benefit {
+      display: flex;
+      align-items: center;
+
+      gap: 12px;
+
+      font-size: 14px;
+    }
+
+    .benefit-icon {
+      width: 36px;
+      height: 36px;
+
+      border-radius: 11px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: rgba(255,255,255,.14);
+    }
+
+    /* =========================
+       RIGHT FORM
+    ========================== */
+
+    .register-card {
+      padding: 50px 48px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .register-card h1 {
+      margin: 0;
+
+      font-size: 30px;
+      font-weight: 800;
+    }
+
+    .auth-subtitle {
+      margin: 8px 0 28px;
+
+      color: #737d8e;
+
+      font-size: 14px;
+    }
+
+    /* =========================
+       FORM
+    ========================== */
+
+    #registerForm {
+      display: flex;
+      flex-direction: column;
+      gap: 17px;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .input-group label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #344054;
+    }
+
+    .input-wrapper,
+    .field {
+      position: relative;
+    }
+
+    .input-icon {
+      position: absolute;
+
+      left: 15px;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      font-size: 16px;
+
+      color: #8b95a7;
+
+      pointer-events: none;
+    }
+
+    #registerForm input {
+      width: 100%;
+      height: 50px;
+
+      padding: 0 15px 0 44px;
+
+      border: 1.5px solid #e1e5ec;
+      border-radius: 11px;
+
+      outline: none;
+
+      background: #fbfcfe;
+
+      color: #172033;
+
+      font-size: 14px;
+
+      transition: .2s;
+    }
+
+    #registerForm input:focus {
+      background: white;
+
+      border-color: #2563eb;
+
+      box-shadow:
+        0 0 0 4px rgba(37,99,235,.10);
+    }
+
+    /* PASSWORD */
+
+    .field input {
+      padding-right: 65px !important;
+    }
+
+    .toggle-pw {
+      position: absolute;
+
+      right: 10px;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      border: none;
+      background: transparent;
+
+      color: #2563eb;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      cursor: pointer;
+    }
+
+    /* =========================
+       PASSWORD STRENGTH
+    ========================== */
+
+    .strength-container {
+      margin-top: -5px;
+    }
+
+    .strength-bar {
+      width: 100%;
+      height: 6px;
+
+      background: #edf0f4;
+
+      border-radius: 20px;
+
+      overflow: hidden;
+    }
+
+    .strength-fill {
+      width: 0%;
+      height: 100%;
+
+      border-radius: 20px;
+
+      transition: width .3s ease;
+    }
+
+    .strength-label {
+      margin: 7px 0 0;
+
+      color: #98a2b3;
+
+      font-size: 11px;
+    }
+
+    /* =========================
+       REGISTER BUTTON
+    ========================== */
+
+    #registerSubmit {
+      width: 100%;
+      height: 51px;
+
+      margin-top: 3px;
+
+      border: none;
+      border-radius: 11px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #2563eb,
+          #4f46e5
+        );
+
+      color: white;
+
+      font-size: 15px;
+      font-weight: 700;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 8px 20px rgba(37,99,235,.22);
+
+      transition: .25s;
+    }
+
+    #registerSubmit:hover {
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 12px 28px rgba(37,99,235,.30);
+    }
+
+    #registerSubmit:active {
+      transform: translateY(0);
+    }
+
+    /* =========================
+       MESSAGE
+    ========================== */
+
+    #message {
+      min-height: 20px;
+
+      margin: 14px 0 0;
+
+      text-align: center;
+
+      font-size: 13px;
+
+      font-weight: 500;
+    }
+
+    /* =========================
+       LOGIN
+    ========================== */
+
+    .login-link {
+      text-align: center;
+
+      margin: 20px 0 0;
+
+      padding-top: 20px;
+
+      border-top: 1px solid #edf0f4;
+
+      color: #667085;
+
+      font-size: 13px;
+    }
+
+    .login-link a {
+      color: #2563eb;
+
+      font-weight: 700;
+
+      text-decoration: none;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+
+    .secure-text {
+      margin-top: 17px;
+
+      text-align: center;
+
+      color: #98a2b3;
+
+      font-size: 11px;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media (max-width: 800px) {
+
+      .register-wrapper {
+        grid-template-columns: 1fr;
+
+        max-width: 520px;
+      }
+
+      .register-left {
+        padding: 35px 30px;
+      }
+
+      .register-left h2 {
+        font-size: 30px;
+      }
+
+      .benefits {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .register-card {
+        padding: 40px 30px;
+      }
+    }
+
+    @media (max-width: 500px) {
+
+      .navbar {
+        padding: 0 20px;
+      }
+
+      .register-page {
+        padding: 25px 14px;
+      }
+
+      .register-left {
+        padding: 30px 24px;
+      }
+
+      .register-left h2 {
+        font-size: 27px;
+      }
+
+      .benefits {
+        grid-template-columns: 1fr;
+      }
+
+      .register-card {
+        padding: 32px 22px;
+      }
+
+      .register-card h1 {
+        font-size: 26px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
+  <!-- ================= NAVBAR ================= -->
+
   <nav class="navbar">
-    <a href="index.html" class="brand">Shop<span>Easy</span></a>
-    <div style="display:flex; align-items:center; gap:8px;">
-      <button class="icon-btn" id="themeToggle" title="Toggle theme">🌙</button>
-    </div>
+
+    <a href="index.html" class="brand">
+      Shop<span>Easy</span>
+    </a>
+
+    <button
+      class="icon-btn"
+      id="themeToggle"
+      title="Toggle theme"
+      type="button"
+    >
+      🌙
+    </button>
+
   </nav>
 
-  <div class="auth-container">
-    <h1>Create Account</h1>
-    <p class="auth-subtitle">Join ShopEasy in seconds</p>
 
-    <form id="registerForm">
-      <input
-        type="text"
-        id="name"
-        placeholder="Full Name"
-        required
-      >
+  <!-- ================= REGISTER PAGE ================= -->
 
-      <input
-        type="email"
-        id="email"
-        placeholder="Email"
-        required
-      >
+  <main class="register-page">
 
-      <div class="field">
-        <input
-          type="password"
-          id="password"
-          placeholder="Password (6+ characters)"
-          minlength="6"
-          required
-        >
-        <button type="button" class="toggle-pw" data-target="password">Show</button>
-      </div>
+    <div class="register-wrapper">
 
-      <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
-      <p class="strength-label" id="strengthLabel">Password strength</p>
 
-      <button type="submit" id="registerSubmit">Register</button>
-    </form>
+      <!-- LEFT SIDE -->
 
-    <p id="message"></p>
+      <section class="register-left">
 
-    <p>
-      Already have an account?
-      <a href="login.html">Login</a>
-    </p>
-  </div>
+        <div class="logo-box">
+          🛍️
+        </div>
+
+        <h2>
+          Create your<br>
+          <span>ShopEasy account.</span>
+        </h2>
+
+        <p>
+          Join ShopEasy and discover a simple, fast and
+          convenient way to shop your favourite products.
+        </p>
+
+
+        <div class="benefits">
+
+          <div class="benefit">
+
+            <div class="benefit-icon">
+              ⚡
+            </div>
+
+            <span>
+              Quick & easy registration
+            </span>
+
+          </div>
+
+
+          <div class="benefit">
+
+            <div class="benefit-icon">
+              🔒
+            </div>
+
+            <span>
+              Secure account
+            </span>
+
+          </div>
+
+
+          <div class="benefit">
+
+            <div class="benefit-icon">
+              🛒
+            </div>
+
+            <span>
+              Save your shopping cart
+            </span>
+
+          </div>
+
+
+          <div class="benefit">
+
+            <div class="benefit-icon">
+              💙
+            </div>
+
+            <span>
+              Easy shopping experience
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- RIGHT SIDE -->
+
+      <section class="register-card">
+
+        <h1>
+          Create Account ✨
+        </h1>
+
+        <p class="auth-subtitle">
+          Join ShopEasy in seconds
+        </p>
+
+
+        <!-- FORM -->
+
+        <form id="registerForm">
+
+
+          <!-- NAME -->
+
+          <div class="input-group">
+
+            <label for="name">
+              Full Name
+            </label>
+
+            <div class="input-wrapper">
+
+              <span class="input-icon">
+                👤
+              </span>
+
+              <input
+                type="text"
+                id="name"
+                placeholder="Enter your full name"
+                autocomplete="name"
+                required
+              >
+
+            </div>
+
+          </div>
+
+
+          <!-- EMAIL -->
+
+          <div class="input-group">
+
+            <label for="email">
+              Email Address
+            </label>
+
+            <div class="input-wrapper">
+
+              <span class="input-icon">
+                ✉️
+              </span>
+
+              <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                autocomplete="email"
+                required
+              >
+
+            </div>
+
+          </div>
+
+
+          <!-- PASSWORD -->
+
+          <div class="input-group">
+
+            <label for="password">
+              Password
+            </label>
+
+            <div class="field">
+
+              <span class="input-icon">
+                🔒
+              </span>
+
+              <input
+                type="password"
+                id="password"
+                placeholder="Password (6+ characters)"
+                minlength="6"
+                autocomplete="new-password"
+                required
+              >
+
+              <button
+                type="button"
+                class="toggle-pw"
+                data-target="password"
+              >
+                Show
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- PASSWORD STRENGTH -->
+
+          <div class="strength-container">
+
+            <div class="strength-bar">
+
+              <div
+                class="strength-fill"
+                id="strengthFill"
+              ></div>
+
+            </div>
+
+            <p
+              class="strength-label"
+              id="strengthLabel"
+            >
+              Password strength
+            </p>
+
+          </div>
+
+
+          <!-- SUBMIT -->
+
+          <button
+            type="submit"
+            id="registerSubmit"
+          >
+            Create Account →
+          </button>
+
+        </form>
+
+
+        <!-- FIREBASE MESSAGE -->
+
+        <p id="message"></p>
+
+
+        <!-- LOGIN -->
+
+        <p class="login-link">
+
+          Already have an account?
+
+          <a href="login.html">
+            Login
+          </a>
+
+        </p>
+
+
+        <!-- SECURITY -->
+
+        <div class="secure-text">
+          🔐 Your information is securely protected
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <!-- ================= JAVASCRIPT ================= -->
 
   <script type="module" src="app.js"></script>
+
   <script type="module" src="auth.js"></script>
+
 </body>
 </html>
