@@ -3,75 +3,256 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ShopEasy - Home</title>
+  <meta name="description" content="ShopEasy — simple, modern online shopping experience">
+  <title>ShopEasy — Shop Smarter, Live Better</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- NAVBAR -->
   <nav class="navbar">
-    <div class="brand">Shop<span>Easy</span></div>
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">S</span>
+        <span>Shop<span class="brand-accent">Easy</span></span>
+      </a>
 
-    <div class="nav-links" id="navLinks">
-      <a href="index.html">Home</a>
-      <a href="index.html#products">Products</a>
-      <a href="login.html">Login</a>
-      <a href="register.html">Register</a>
-    </div>
+      <div class="nav-links" id="navLinks">
+        <a class="active" href="index.html">Home</a>
+        <a href="#products">Products</a>
+        <a href="#categories">Categories</a>
+        <a href="#why-us">Why Us</a>
+      </div>
 
-    <div style="display:flex; align-items:center; gap:8px;">
-      <button class="icon-btn" id="themeToggle" title="Toggle theme">🌙</button>
-      <button class="icon-btn" id="cartToggle" title="Cart">
-        🛒
-        <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
-      </button>
-      <button class="hamburger" id="hamburger">☰</button>
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+
+        <a class="nav-auth login-link" href="login.html">Login</a>
+        <a class="nav-auth signup-link" href="register.html">Sign Up</a>
+
+        <button class="icon-btn cart-button" id="cartToggle" title="Cart" aria-label="Open cart">
+          🛒
+          <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
+        </button>
+
+        <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
+      </div>
     </div>
   </nav>
 
+  <!-- HERO -->
   <header class="hero">
-    <h1>Welcome to ShopEasy</h1>
-    <p>Discover quality products at affordable prices — all in one place.</p>
-    <a class="shop-btn" href="#products">Shop Now</a>
-  </header>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow"><span></span> WELCOME TO SHOPEASY</div>
+        <h1>Shop smarter.<br><span>Live better.</span></h1>
+        <p>
+          Discover quality products at affordable prices — all in one place.
+          Simple shopping, great deals and a smooth experience.
+        </p>
 
-  <section id="products" class="products">
-    <div class="products-head">
-      <h2>Featured Products</h2>
-      <div class="filters">
-        <input type="text" id="searchBox" class="search-box" placeholder="Search products…">
-        <select id="categoryFilter" class="category-select">
-          <option value="all">All Categories</option>
-        </select>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#products">Shop Now <span>→</span></a>
+          <a class="btn btn-secondary" href="#categories">Explore Categories</a>
+        </div>
+
+        <div class="trust-row">
+          <div><span>✓</span> Secure shopping</div>
+          <div><span>✓</span> Easy checkout</div>
+          <div><span>✓</span> Quality products</div>
+        </div>
+      </div>
+
+      <!-- CSS/emoji visual only — no external product image required -->
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-glow"></div>
+        <div class="floating-card card-one">👟</div>
+        <div class="floating-card card-two">🎧</div>
+        <div class="shopping-bag">🛍️</div>
+        <div class="art-circle"></div>
       </div>
     </div>
+  </header>
 
-    <div class="product-grid" id="productGrid">
-      <div class="empty-state">Loading products…</div>
+  <!-- QUICK BENEFITS -->
+  <section class="benefits" id="why-us">
+    <div class="benefit">
+      <div class="benefit-icon">🚚</div>
+      <div><strong>Fast Delivery</strong><span>Quick & reliable shipping</span></div>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">🔒</div>
+      <div><strong>Secure Payments</strong><span>Your data stays protected</span></div>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">↩️</div>
+      <div><strong>Easy Returns</strong><span>Simple return experience</span></div>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">💬</div>
+      <div><strong>Support</strong><span>We're here to help</span></div>
     </div>
   </section>
 
+  <main>
+
+    <!-- CATEGORIES -->
+    <section class="section categories-section" id="categories">
+      <div class="section-heading centered">
+        <div>
+          <p class="section-kicker">BROWSE BY CATEGORY</p>
+          <h2>Find what you need</h2>
+          <p>Explore popular categories and discover your next favourite product.</p>
+        </div>
+      </div>
+
+      <div class="category-grid">
+        <a class="category-card" href="#products" data-category="Fashion">
+          <span class="category-icon fashion">👕</span>
+          <div><h3>Fashion</h3><p>Everyday styles</p></div>
+          <span class="category-arrow">→</span>
+        </a>
+        <a class="category-card" href="#products" data-category="Electronics">
+          <span class="category-icon electronics">🎧</span>
+          <div><h3>Electronics</h3><p>Smart essentials</p></div>
+          <span class="category-arrow">→</span>
+        </a>
+        <a class="category-card" href="#products" data-category="Accessories">
+          <span class="category-icon accessories">🎒</span>
+          <div><h3>Accessories</h3><p>Complete your look</p></div>
+          <span class="category-arrow">→</span>
+        </a>
+        <a class="category-card" href="#products" data-category="all">
+          <span class="category-icon all">✨</span>
+          <div><h3>View All</h3><p>See every product</p></div>
+          <span class="category-arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="section products-section" id="products">
+      <div class="section-heading products-heading">
+        <div>
+          <p class="section-kicker">OUR COLLECTION</p>
+          <h2>Featured products</h2>
+          <p>Handpicked products at prices you'll love.</p>
+        </div>
+
+        <div class="filters">
+          <div class="search-wrap">
+            <span>⌕</span>
+            <input type="text" id="searchBox" class="search-box" placeholder="Search products...">
+          </div>
+          <select id="categoryFilter" class="category-select" aria-label="Filter by category">
+            <option value="all">All Categories</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="product-grid" id="productGrid">
+        <div class="empty-state">Loading products…</div>
+      </div>
+    </section>
+
+    <!-- PROMO -->
+    <section class="promo">
+      <div>
+        <p class="promo-kicker">LIMITED TIME OFFER</p>
+        <h2>Upgrade your everyday.</h2>
+        <p>Great products. Better prices. A simple shopping experience.</p>
+        <a class="btn promo-btn" href="#products">Explore Deals →</a>
+      </div>
+      <div class="promo-art" aria-hidden="true">
+        <span>🎁</span><span>✨</span><span>🛒</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
   <footer>
-    <p>© 2026 ShopEasy. Learning Project.</p>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="brand footer-logo">
+          <span class="brand-mark">S</span>
+          <span>Shop<span class="brand-accent">Easy</span></span>
+        </a>
+        <p>Quality products. Better prices. Always.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="#products">Products</a>
+        <a href="#categories">Categories</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Create Account</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Help</h4>
+        <a href="#why-us">Why ShopEasy</a>
+        <a href="#">Shipping Info</a>
+        <a href="#">Returns</a>
+        <a href="#">FAQs</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Project</h4>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 ShopEasy. Learning Project.</span>
+      <span>Made with ❤️</span>
+    </div>
   </footer>
 
-  <!-- Cart Drawer -->
+  <!-- CART OVERLAY + DRAWER: required by app.js -->
   <div class="overlay" id="cartOverlay"></div>
-  <aside class="cart-drawer" id="cartDrawer">
+
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
     <div class="cart-header">
-      <h3>Your Cart</h3>
-      <button class="icon-btn" id="closeCart">✕</button>
+      <div>
+        <p class="drawer-kicker">YOUR BAG</p>
+        <h3>Shopping Cart</h3>
+      </div>
+      <button class="icon-btn" id="closeCart" aria-label="Close cart">✕</button>
     </div>
+
     <div class="cart-items" id="cartItems"></div>
+
     <div class="cart-footer">
       <div class="cart-total">
         <span>Total</span>
         <span id="cartTotal">₹0</span>
       </div>
-      <button id="checkoutBtn" style="width:100%;">Checkout</button>
+      <button id="checkoutBtn" class="checkout-btn">Proceed to Checkout →</button>
     </div>
   </aside>
 
   <script type="module" src="app.js"></script>
   <script type="module" src="e-commerce.js"></script>
+
+  <script>
+    // Category cards connect to the existing Firestore-powered product filter.
+    document.querySelectorAll(".category-card").forEach(card => {
+      card.addEventListener("click", () => {
+        const category = card.dataset.category;
+        const select = document.querySelector("#categoryFilter");
+        if (select && [...select.options].some(o => o.value === category)) {
+          select.value = category;
+          select.dispatchEvent(new Event("change"));
+        }
+      });
+    });
+  </script>
 </body>
 </html>
